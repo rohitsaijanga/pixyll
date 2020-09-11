@@ -39,7 +39,7 @@
             var lastImageIndex = 0
             var displayImages = function (comicData, endIndex) {
                 if (endIndex < comicData["imoji"].length) {
-                    $.each(comicData["friends"].slice(lastImageIndex, endIndex), function (_, comicInfo) {
+                    $.each(comicData["imoji"].slice(lastImageIndex, endIndex), function (_, comicInfo) {
                         imgURL = comicInfo.src
                         imgURL = imgURL.replace("%s", firstID)
                         $("#container").append("<img class='comic-img' src='" + imgURL +
@@ -56,7 +56,7 @@
             $.getJSON("api.json", function (data) {
                 displayImages(data, 80)
                 searchFilter = function () {
-                    displayImages(data, data["friends"].length - 1)
+                    displayImages(data, data["imoji"].length - 1)
                     var searchTerm = $("#tag-search").val()
                     $(".comic-img").each(function (_, comicElem) {
                         var display = 0
